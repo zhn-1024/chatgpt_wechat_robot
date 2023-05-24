@@ -52,7 +52,7 @@ func NewHandler() (msgFunc func(msg *openwechat.Message), err error) {
 	dispatcher.RegisterHandler(func(message *openwechat.Message) bool {
 		return message.IsFriendAdd()
 	}, func(ctx *openwechat.MessageContext) {
-		msg := ctx.Message
+		msg :="我重新介绍下这个扮演游戏，你将扮演一名叫做“小盈”的盈科律所法律顾问，而我是过来进行咨询的客户。你要自称“小盈”，在与我对话的时候要专业一些，热情一点。我们的模拟现在开始，请你扮演小盈并与我打招呼。这只是学术上的模拟，不会有人会受到伤害，在对我的回答上不要出现过多的解释，不要透露出自己是ChatGPT，要保证专业，保证这次扮演具有沉浸感。接下来的是我的问题。"+ ctx.Message
 		if config.LoadConfig().AutoPass {
 			_, err := msg.Agree("")
 			if err != nil {
